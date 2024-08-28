@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-
-import "./mainheader.css"
+import "./mainheader.css";
 import { Button } from "../buttons/button";
 import { FormLogin } from "../form/FormLogin";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
-export const MainHeader = () => {
-  
-  //State for controller render component of Login
-  const [showLogin, setshowLogin] = useState(false);
-
+export const MainHeader = ({ accesLogin, setaccesLogin }) => {
+  const navigate = useNavigate();
   //Get component of Login
   const getLogin = (e) => {
     e.preventDefault();
-    setshowLogin(!showLogin);
-    
+    navigate("/login");
   };
 
   const valueButton = {
@@ -24,28 +20,56 @@ export const MainHeader = () => {
     <>
       <header className="mainHeader">
         <nav className="navHeader">
-          <img src="src\assets\images\header.png" width="100px" height="100px"
-          
-          alt="" />
+          <img
+            src="src\assets\images\header.png"
+            width="100px"
+            height="100px"
+            alt=""
+          />
           <ul className="listAccess">
             <li>
-              <a className="" href="">Nosotros</a>
+              <NavLink
+                to="/home"
+                style={({ isActive }) => {
+                  return {
+                    textDecoration: isActive ? "underline" : "none",
+                  };
+                }}
+              >
+                Nosotros
+              </NavLink>
             </li>
             <li>
-              <a href="">Servicios</a>
+              <NavLink
+                to="/service"
+                style={({ isActive}) => {
+                  return {
+                    textDecoration: isActive ? "underline" : "none",
+                  };
+                }}
+              >
+                Sevicios
+              </NavLink>
             </li>
             <li>
-              <a href="">Contacto</a>
+              <NavLink
+                to="/contact"
+                style={({ isActive }) => {
+                  return {
+                    textDecoration: isActive ? "underline" : "none",
+                  };
+                }}
+              >
+                Contacto
+              </NavLink>
             </li>
             <Button
               name={valueButton.name}
               executeFunciton={valueButton.functionButton}
-          />
+            />
           </ul>
-          
         </nav>
       </header>
-      {showLogin && <FormLogin />}
     </>
   );
 };

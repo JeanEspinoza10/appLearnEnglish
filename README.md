@@ -6,3 +6,7 @@
 ## Review
 1. CSS => FormLogin,FormRegister
 
+
+## Deuda Tecnica
+1. Trabajar con modales.
+

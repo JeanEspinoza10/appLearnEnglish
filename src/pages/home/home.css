@@ -1,0 +1,35 @@
+.container-home {
+    
+    width: 800px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    transition: 2s;
+    animation-name:animarhome ;
+    animation-duration: 1s
+}
+
+/* Add Animation */
+@keyframes animarhome {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+.container-home-description {
+    
+    width: auto;
+    height: 400px;
+    font-size: larger;
+    padding: 0px 20px 0px 0px;
+}
+
+.container-home-description p {
+    line-height: 2.5rem;
+}
+.container-home-img img {
+
+    width: 400px;
+    height: 400px;
+    
+
+}

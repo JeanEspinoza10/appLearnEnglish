@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from 'react';
-
+import {  NavLink } from "react-router-dom";
 export function FormRegister({functionExecute}) {
     
     //State Initial
@@ -43,7 +43,7 @@ export function FormRegister({functionExecute}) {
                             name="nameRegister"
                             value={formState.nameRegister}
                             onChange={handleChange}
-                            placeholder="Nombre Apellidos"
+                            placeholder="Nombres y Apellidos"
                             required
                             autoComplete="users"
                         />
@@ -87,8 +87,28 @@ export function FormRegister({functionExecute}) {
                     <button type="submit">Registrar</button>
                 </form>
                 <nav>
-                    <a href="">Ingresar</a>
-                    <a href="">Olvidaste Contraseña</a>
+                <NavLink
+                to="/login"
+                style={({ isActive, isPending, isTransitioning }) => {
+                  return {
+                    fontSize: "15px",
+                    textDecoration: isActive? "none" : "underline",
+                  };
+                }}
+              >
+                Ingresar
+              </NavLink>
+              <NavLink
+                to="/register"
+                style={({ isActive, isPending, isTransitioning }) => {
+                  return {
+                    fontSize: "15px",
+                    textDecoration: isActive? "underline" : "none",
+                  };
+                }}
+              >
+                Ovlidar Contraseña
+              </NavLink>
                 </nav>
             </section>
         </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from "react";
-
+import {  NavLink } from "react-router-dom";
 import "./form.css";
 
 export function FormLogin({}) {
@@ -61,8 +61,28 @@ export function FormLogin({}) {
             <button type="submit">Ingresar</button>
           </form>
           <nav>
-            <a href="">Registrarse</a>
-            <a href="">Olvidaste Contraseña</a>
+            <NavLink
+                to="/register"
+                style={({ isActive, isPending, isTransitioning }) => {
+                  return {
+                    fontSize: "15px",
+                    textDecoration: isActive? "none" : "underline",
+                  };
+                }}
+              >
+                Registrarse
+              </NavLink>
+              <NavLink
+                to="/login"
+                style={({ isActive, isPending, isTransitioning }) => {
+                  return {
+                    fontSize: "15px",
+                    textDecoration: isActive? "underline" : "none",
+                  };
+                }}
+              >
+                Ovlidar Contraseña
+              </NavLink>
           </nav>
         </div>
       </section>
