@@ -11,7 +11,6 @@ import { Service } from "./pages/service/Service.jsx";
 import { UserLearning } from "./pages/protect/UserLearning.jsx";
 import {Learning} from "./pages/learning/Learning.jsx"
 import { Protect } from "./components/auth/Protect.jsx";
-import { FilterList } from "./components/core/FilterList.jsx";
 
 
 /*

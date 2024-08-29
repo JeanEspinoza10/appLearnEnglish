@@ -1,0 +1,24 @@
+#container-phrases-list {
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: auto;
+    align-items: center;
+    overflow:scroll;
+}
+#filters-list {
+    
+    margin-top: 20px;
+    width: 250px;  
+    padding: 10px;
+}
+
+#container-phrases-list ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: green;
+    padding:20px ;
+    width: 250px;
+}

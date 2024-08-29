@@ -1,0 +1,15 @@
+#container-view-phrases {
+
+    width: auto;
+    overflow: hidden;
+    
+}
+#container-view-phrases div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-view-phrases div p {
+    margin: 0px 0px 25px 25px;
+}

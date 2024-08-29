@@ -1,6 +1,10 @@
 
 export const listTag = [
   {
+    id:0,
+    tag:"All"
+  },
+  {
     id: 1,
     tag: "Communication"
   },
@@ -30,7 +34,7 @@ export const phrases = [
   {
     id: 6,
     phrase: "The pen is mightier than the sword.",
-    url_img: "https://miro.medium.com/v2/resize:fit:1400/1*buL65bCJC_9jx493srCcSg.png",
+    url_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVYbX400H1StXpU7IfuKXoglx2xw8SOCuJpQ&s",
     description: "This phrase suggests that written words and ideas have more power than physical force.",
     translation: "La pluma es más poderosa que la espada.",
     tag: "Communication"
@@ -146,7 +150,7 @@ export const phrases = [
   {
     id: 18,
     phrase: "You miss 100% of the shots you don't take.",
-    url_img: "https://images.pexels.com/photos/2086622/pexels-photo-2086622.jpeg",
+    url_img: "",
     description: "This phrase encourages people to take risks and try, because not trying guarantees failure.",
     translation: "Fallaste el 100% de los tiros que no hiciste.",
     tag: "Motivation"

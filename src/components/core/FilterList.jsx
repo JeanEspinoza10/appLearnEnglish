@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { phrases,listTag } from "@const/listphrases.js";
+import "./filterlist.css"
 
 export const FilterList = ({ filterWord, setFilterWord, phrasesID }) => {
   const generateOptions = (listValue) => {
@@ -62,7 +63,6 @@ export const FilterList = ({ filterWord, setFilterWord, phrasesID }) => {
           value={filterWord}
           onChange={handleChange}
         >
-          <option value="All">All</option>
           {generateOptions(listTag)}
         </select>
         <ul>{generateListWords(phrases)}</ul>

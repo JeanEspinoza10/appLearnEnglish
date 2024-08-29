@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { phrases,listTag } from "@const/listphrases.js";
-
+import "./viewphrases.css"
 export const ViewPhrases = ({pharesID, tag}) => {
     const generateImg = (listValue) => {
 
@@ -39,9 +39,7 @@ export const ViewPhrases = ({pharesID, tag}) => {
   return (
     <>
         <section id='container-view-phrases'>
-            <div>
                 {generateImg(phrases)}
-            </div>
         </section>
     </>
   )
