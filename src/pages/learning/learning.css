@@ -1,8 +1,8 @@
 .container-learning {
-
     display: flex;
     flex-direction: row;
     gap: 20px;
     width: auto;
-    height: 500px;
+    height:800px;
 }
+

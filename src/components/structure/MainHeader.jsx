@@ -63,6 +63,18 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
                 Contacto
               </NavLink>
             </li>
+            <li>
+              <NavLink
+              to="/learning"
+              style={({ isActive }) => {
+                return {
+                  textDecoration: isActive ? "underline" : "none",
+                };
+              }}
+              >
+                Aprendiendo
+              </NavLink>
+            </li>
             <Button
               name={valueButton.name}
               executeFunciton={valueButton.functionButton}

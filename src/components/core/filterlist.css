@@ -1,24 +1,71 @@
 #container-phrases-list {
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     width: 350px;
-    height: auto;
     align-items: center;
     overflow:scroll;
 }
 #filters-list {
-    
+    border-radius: 50px;
     margin-top: 20px;
     width: 250px;  
+    background:  #0D3CE9; 
+    color: #FFFFFF; 
+    border: 1px solid black;
+    border-radius: 12px; 
     padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+   
 }
+
 
 #container-phrases-list ul {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background-color: green;
     padding:20px ;
     width: 250px;
+    
+   
+}
+#container-phrases-list ul button {
+    height: 50px;
+    background-color: #9B59B6;
+    color: #FFFFFF; 
+    border: none;
+    border-radius: 12px; 
+    padding: 10px 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease;
+}
+#container-phrases-list ul button:hover {
+    background-color: #FFFFFF; 
+    color: black;
+} 
+
+::-webkit-scrollbar {
+    width: 20px;  
+    height: 20px; 
+}
+::-webkit-scrollbar-thumb {
+    
+    background-color:#0D3CE9;  
+    border-radius: 10px; 
+    border: 2px solid #FFF; 
+}
+
+/* Estilo cuando se pasa el ratón sobre el scroll */
+::-webkit-scrollbar-thumb:hover {
+    background-color:#0D3CE9; 
+}
+
+/* Fondo del scroll (la parte no movible) */
+::-webkit-scrollbar-track {
+    background-color: #F0F0F0; 
+    border-radius: 10px;
 }
