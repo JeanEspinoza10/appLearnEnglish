@@ -57,15 +57,7 @@ export const FilterList = ({ filterWord, setFilterWord, phrasesID }) => {
   return (
     <>
       <section id="container-phrases-list">
-        <select
-          name="filters-list-select"
-          id="filters-list"
-          value={filterWord}
-          onChange={handleChange}
-        >
-          {generateOptions(listTag)}
-        </select>
-        <ul>{generateListWords(phrases)}</ul>
+        {generateListWords(phrases)}
       </section>
     </>
   );

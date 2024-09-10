@@ -1,8 +1,7 @@
 #container-view-phrases {
-
-    width: auto;
-    overflow: hidden;
-    
+    width: 100%;
+    flex-grow: 1; 
+    overflow: auto;  
 }
 #container-view-phrases div {
     display: flex;

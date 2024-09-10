@@ -1,7 +1,7 @@
 .container-service {
-    width: auto;
-    height: 100%;
-    margin: 0 auto;
+    width: 800px;
+    height: auto;
+    margin: 25px 0px 25px 0px;
     padding: 15px;
     transition: 2s;
     animation-name:animarservice ;

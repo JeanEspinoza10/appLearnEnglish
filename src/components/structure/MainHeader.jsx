@@ -53,18 +53,6 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
             </li>
             <li>
               <NavLink
-                to="/contact"
-                style={({ isActive }) => {
-                  return {
-                    textDecoration: isActive ? "underline" : "none",
-                  };
-                }}
-              >
-                Contacto
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
               to="/learning"
               style={({ isActive }) => {
                 return {
@@ -73,6 +61,18 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
               }}
               >
                 Aprendiendo
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                style={({ isActive }) => {
+                  return {
+                    textDecoration: isActive ? "underline" : "none",
+                  };
+                }}
+              >
+                Contacto
               </NavLink>
             </li>
             <Button

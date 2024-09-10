@@ -8,8 +8,12 @@ export const Learning = () => {
 
   return( 
         <section className="container-learning">
-              <FilterList filterWord={filter} setFilterWord={setfilter} phrasesID={setPhrasesID}/>
-              <ViewPhrases pharesID={phrasesID} tag={filter} />
+                  <h1>Frases</h1>
+                  <main className="container-learning-phares">
+                        <FilterList filterWord={filter} setFilterWord={setfilter} phrasesID={setPhrasesID}/>
+                        <ViewPhrases pharesID={phrasesID} tag={filter} />
+                  </main>
+              
         </section>)
 
 }
