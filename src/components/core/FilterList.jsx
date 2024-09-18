@@ -1,63 +1,59 @@
-import React, { useState } from "react";
-import { phrases,listTag } from "@const/listphrases.js";
+import { useEffect,useState} from 'react';
+import { phrases } from "@const/listphrases.js";
 import "./filterlist.css"
 
-export const FilterList = ({ filterWord, setFilterWord, phrasesID }) => {
-  const generateOptions = (listValue) => {
-    return listValue.map((value) => {
-      return (
-        <option key={value.id} value={value.tag}>
-          {value.tag}
-        </option>
-      );
-    });
-  };
-  const handleChange = (e) => {
-    const { target } = e;
-    const { value } = target;
-    setFilterWord(value);
-  };
+export const FilterList = ({ setPhrasesID, phrasesID, data, setData}) => {
+  
+  
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
   const onClickPhrases = (event) => {
+    event.preventDefault()
     const id = parseInt(event.target.id, 10);
-    phrasesID(id);
+    setPhrasesID(id);
+    console.log(data)
   };
 
   const generateListWords = (listValue) => {
-    if (filterWord === "All") {
-      return listValue.map((value) => {
-        return (
-          <button
-            id={value.id}
-            key={value.id}
-            onClick={(event) => {
-              onClickPhrases(event);
-            }}
-          >
-            {value.phrase}
-          </button>
-        );
-      });
-    } else {
-      return listValue
-        .filter((value) => value.tag === filterWord)
-        .map((value) => (
-          <button
-            id={value.id}
-            key={value.id}
-            onClick={(event) => {
-              onClickPhrases(event);
-            }}
-          >
-            {value.phrase}
-          </button>
-        ));
-    }
+    return listValue.map((value)=>(
+      <button
+        id={value.id}
+        key={value.id}
+        onClick={(event) => onClickPhrases(event)}
+        className={phrasesID === value.id ? 'clicked' : ''}
+      >
+        {value.title}
+      </button>
+    ))
   };
 
+  useEffect(()=>{
+    fetch('http://3.14.149.64/services/free/phrases')
+    .then((response)=>{
+      if(!response.ok) {
+        setError(true);
+      }
+      return response.json()
+    })
+    .then((responseJson)=>{
+      setData(responseJson.data)
+      setPhrasesID(responseJson.data[0].id)
+      setLoading(false)
+    })
+    .catch((error)=>{
+      setError(true);
+      setLoading(false);
+    })
+
+
+  },[]);
+  
   return (
     <>
       <section id="container-phrases-list">
-        {generateListWords(phrases)}
+        {(loading || error) && <button>{loading ? 'Getting Data' : 'An error occurred'}</button>}
+        {generateListWords(data)}
       </section>
     </>
   );

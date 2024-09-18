@@ -27,7 +27,7 @@ export const phrases = [
     id: 1,
     phrase: "A picture is worth a thousand words.",
     url_img: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&h=350",
-    description: "This phrase means that a single image can convey complex ideas and emotions better than a lengthy description.",
+    description: "This phrase means that a single image can convey complex ideas and emotions better.",
     translation: "Una imagen vale más que mil palabras.",
     tag: "Communication"
   },

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FilterList } from '../../components/core/FilterList'
 import { ViewPhrases } from '../../components/core/ViewPhrases'
 import "./learning.css"
 export const Learning = () => {
-  const [filter, setfilter] = useState("All")
-  const [phrasesID, setPhrasesID] = useState(1)
+  const [phrasesID, setPhrasesID] = useState(null)
+  const [data, setData] = useState([])
 
   return( 
         <section className="container-learning">
                   <h1>Frases</h1>
                   <main className="container-learning-phares">
-                        <FilterList filterWord={filter} setFilterWord={setfilter} phrasesID={setPhrasesID}/>
-                        <ViewPhrases pharesID={phrasesID} tag={filter} />
+                        <FilterList phrasesID={phrasesID} setPhrasesID={setPhrasesID} data={data} setData={setData}/>
+                        <ViewPhrases phrasesID={phrasesID} data={data} />
                   </main>
               
         </section>)

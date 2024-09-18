@@ -27,6 +27,11 @@
     color: black;
 } 
 
+#container-phrases-list button.clicked {
+    background-color: #FFFFFF; 
+    color: black;
+}
+
 ::-webkit-scrollbar {
     width: 20px;  
     height: 20px; 
