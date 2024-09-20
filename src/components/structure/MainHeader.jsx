@@ -19,13 +19,14 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
   return (
     <>
       <header className="mainHeader">
-        <nav className="navHeader">
           <img
-            src="src\assets\images\header.png"
-            width="100px"
-            height="100px"
-            alt=""
-          />
+                src="src\assets\images\header.png"
+                width="100px"
+                height="100px"
+                alt="logo-application-learning"
+              />
+        
+        <nav className="navHeader">
           <ul className="listAccess">
             <li>
               <NavLink

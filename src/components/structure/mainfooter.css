@@ -1,16 +1,10 @@
-
 #main-footer {
     background-color: #0D3CE9;
     width: 100%;
-    padding: 0px;
-    margin: 0px; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    position: fixed;  
-    bottom: 0;   
-    
+    align-items: center;    
 }
 
 #main-footer p {

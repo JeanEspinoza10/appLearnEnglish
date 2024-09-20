@@ -17,7 +17,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
                   <figure>
                     
                   </figure>
-                  <audio src={fileSound} controls>
+                  <audio className="" src={fileSound} controls>
                   Listening Phrases
                   </audio>
                 </main>

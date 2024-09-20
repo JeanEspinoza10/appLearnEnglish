@@ -1,17 +1,20 @@
 .mainHeader {
     width: 100%;
-    height: auto;
-    margin: 0px;
-    padding: 0px;
     background-color: #0D3CE9; 
-}
-
-.navHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0px 20px 0px 20px;    
-    padding: 0px;
+    align-items: center;
+
+}
+
+
+.mainHeader img {
+    margin: 0px 0px 10px 20px; 
+}
+
+.navHeader {
+    margin: 0px 20px 0px 0px;    
     font-weight: bold;
     color: #1A1A1A;
 }
@@ -20,6 +23,7 @@
     list-style-type: none;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     gap: 30px;
     font-size: medium;
@@ -29,7 +33,4 @@
 .navHeader .listAccess a {
     text-decoration: none;
     color: white;
-}
-.navHeader img {
-    margin-bottom: 16px;
 }
