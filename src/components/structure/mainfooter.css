@@ -2,9 +2,18 @@
     background-color: #0D3CE9;
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+#main-footer-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
+    margin: 20px;
 }
 
 #main-footer p {

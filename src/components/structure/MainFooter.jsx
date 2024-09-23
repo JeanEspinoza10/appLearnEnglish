@@ -7,11 +7,16 @@ export const MainFooter = () => {
   return (
     <>
       <footer id="main-footer">
-        <p>@{currentYesar} Jean Espinoza</p>
-        <figure>
-            <img src="src\assets\icons\github.svg" alt="Access for my repository" />
+        <div id="main-footer-container">
+          <p>@{currentYesar} Jean Espinoza</p>
+          <figure>
+            <img
+              src="src\assets\icons\github.svg"
+              alt="Access for my repository"
+            />
             <img src="src\assets\icons\linkedin.svg" alt="My social media" />
-        </figure>
+          </figure>
+        </div>
       </footer>
     </>
   );

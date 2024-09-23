@@ -2,13 +2,18 @@
     width: 100%;
     background-color: #0D3CE9; 
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainHeader-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
 }
-
-
 .mainHeader img {
     margin: 0px 0px 10px 20px; 
 }
@@ -26,11 +31,28 @@
     justify-content: space-around;
     align-items: center;
     gap: 30px;
-    font-size: medium;
+    font-size: large;
     text-decoration: none;
 }
 
 .navHeader .listAccess a {
     text-decoration: none;
-    color: white;
+    color: white;    
+}
+
+/*Styles for windows from 0 a 400px*/
+@media (max-width: 799px) {
+    .mainHeader-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .mainHeader img {
+        margin: 0px; 
+    }
+
+    .navHeader .listAccess {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 5px;
+    }
 }

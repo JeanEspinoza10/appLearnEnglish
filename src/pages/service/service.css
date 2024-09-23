@@ -1,13 +1,13 @@
 .container-service {
-    width: 800px;
+    width: 100%;
     height: auto;
-    margin: 25px 0px 25px 0px;
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
     transition: 2s;
     animation-name:animarservice ;
     animation-duration: 1s;
-    display: flex;
-    flex-direction: column;
+    margin: 100px 0px 25px 0px;
+    padding: 15px;
 }
 /* Add Animation */
 @keyframes animarservice {
@@ -18,9 +18,9 @@
 
 
 .container-service-description p {
-    font-family: 'Open Sans', sans-serif; /* Tipografía legible */
-    font-size: 1.2em; /* Tamaño un poco mayor al estándar */
-    line-height: 2.8rem; /* Espaciado entre líneas para mejor legibilidad */
+    font-family: 'Open Sans', sans-serif; 
+    font-size: larger; 
+    line-height: 2.8rem; 
   }
 
 .container-service-cards-service {
@@ -37,12 +37,35 @@
   --primary-color: #7257fa;
   --secondary-color: #3c3852;
   width: auto;
+  height: auto;
   font-family: "Arial";
   padding: 1rem;
   cursor: pointer;
   border-radius: var(--border-radius);
   background: #fefeff;
-  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
-  position: relative;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2); 
   line-height: 1.8rem;
+}
+
+/*Styles for windows from 0 a 400px*/
+@media (max-width: 799px) {
+  .container-service {
+    margin:0px;
+    flex-direction: column;
+    overflow: auto
+  }
+  .container-service-description {
+      margin: 0px;
+      padding-left: 20px;
+  }
+  .container-service-cards-service  {
+    width: 100%;
+   height: auto;
+    display: flex;
+   flex-direction: column;
+  }
+  .card-service {
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2); 
+  }
+
 }
