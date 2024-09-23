@@ -1,4 +1,6 @@
 import React from "react";
+import iconLinkedin from '@assets/icons/linkedin.svg'
+import icongitHub from '@assets/icons/github.svg'
 import "./mainfooter.css"
 export const MainFooter = () => {
   //Get Year
@@ -11,10 +13,10 @@ export const MainFooter = () => {
           <p>@{currentYesar} Jean Espinoza</p>
           <figure>
             <img
-              src="src\assets\icons\github.svg"
+              src={icongitHub}
               alt="Access for my repository"
             />
-            <img src="src\assets\icons\linkedin.svg" alt="My social media" />
+            <img src={iconLinkedin} alt="My social media" />
           </figure>
         </div>
       </footer>
