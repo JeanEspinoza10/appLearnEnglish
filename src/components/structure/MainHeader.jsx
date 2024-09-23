@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./mainheader.css";
+import ImageHeader from '@assets/images/header.png'
 import { Button } from "@components/buttons/Button";
 import { useNavigate, NavLink } from "react-router-dom";
 
@@ -22,7 +23,7 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
       <header className="mainHeader">
         <div className="mainHeader-container">
           <img
-            src="src/assets/images/header.png"
+            src={ImageHeader}
             width="100px"
             height="100px"
             alt="logo-application-learning"

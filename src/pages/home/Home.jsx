@@ -1,5 +1,7 @@
 import React from "react";
+import ImageHome from '@assets/images/home.png'
 import './home.css'
+
 
 export const Home = () => {
   return (
@@ -13,7 +15,7 @@ export const Home = () => {
         </p>
       </div>
       <figure className="container-home-img">
-        <img src="src\assets\images\home.png" alt="Learning English" />
+        <img src={ImageHome} alt="Learning English" />
       </figure>
     </section>
   );
