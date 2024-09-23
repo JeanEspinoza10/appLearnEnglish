@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./mainheader.css";
-import { Button } from "@components/buttons/button";
+import { Button } from "@components/buttons/Button";
 import { useNavigate, NavLink } from "react-router-dom";
 
 export const MainHeader = ({ accesLogin, setaccesLogin }) => {
