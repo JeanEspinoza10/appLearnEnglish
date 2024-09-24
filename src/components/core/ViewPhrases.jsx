@@ -11,13 +11,14 @@ export const ViewPhrases = ({phrasesID, data}) => {
             return (
               <div className="card-information-phrases" key={value.sound_url}>
                 <header className="card-header">
-                  <h2>{value.title}</h2>
+                  <h2 className="front">{value.title}</h2>
+                  <h2 className="back">{value.translation}</h2>
                 </header>
                 <main className="card-content">
                   <figure>
                     
                   </figure>
-                  <audio className="" src={fileSound} controls>
+                  <audio className="card-audio" src={fileSound} controls>
                   Listening Phrases
                   </audio>
                 </main>

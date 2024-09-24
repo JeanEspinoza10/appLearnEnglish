@@ -13,7 +13,6 @@ export function FormLogin({}) {
   //Control the form
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Enviando");
   };
 
   //Control value for email and password

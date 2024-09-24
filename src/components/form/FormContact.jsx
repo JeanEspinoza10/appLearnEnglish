@@ -13,7 +13,7 @@ export const FormContact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Enviando");
+
   };
 
   //Control value for inputs

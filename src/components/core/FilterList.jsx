@@ -12,7 +12,6 @@ export const FilterList = ({ setPhrasesID, phrasesID, data, setData}) => {
     event.preventDefault()
     const id = parseInt(event.target.id, 10);
     setPhrasesID(id);
-    console.log(data)
   };
 
   const generateListWords = (listValue) => {
