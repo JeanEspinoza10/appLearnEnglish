@@ -13,26 +13,39 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 0px 25px 0px 25px;
+    height: 100px;
 }
 .mainHeader img {
-    margin: 0px 0px 10px 20px; 
+    margin-bottom: 10px;
 }
+
 
 .navHeader {
     margin: 0px 20px 0px 0px;    
     font-weight: bold;
     color: #1A1A1A;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .navHeader .listAccess  {
+    background-color: rgba(13, 60, 233, 0.8); /* 0.5 es 50% de opacidad */
     list-style-type: none;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 30px;
     font-size: large;
-    text-decoration: none;
+    text-decoration: none; 
+    padding: 10px;   
 }
 
 .navHeader .listAccess a {
@@ -40,19 +53,37 @@
     color: white;    
 }
 
-/*Styles for windows from 0 a 400px*/
-@media (max-width: 799px) {
-    .mainHeader-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .mainHeader img {
-        margin: 0px; 
-    }
+/**Menu hamburger*/
 
+
+#menu_hamburguesa {
+    color: white;
+    display: none;
+}
+.label_hamburger svg rect {
+    fill: white;
+}
+
+#menu_hamburguesa:checked + .navHeader
+{
+    height: auto;
+}
+
+
+/*Styles for windows from 0 a 400px*/
+@media (min-width: 799px) {
+    .label_hamburger {
+         display: none;
+    }
+    .navHeader {
+        position: static;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+    }
     .navHeader .listAccess {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 5px;
+        flex-direction: row;
     }
 }
+
+

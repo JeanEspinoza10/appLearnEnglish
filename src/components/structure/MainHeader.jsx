@@ -28,6 +28,14 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
             height="100px"
             alt="logo-application-learning"
           />
+          <label className="label_hamburger" htmlFor="menu_hamburguesa">
+            <svg viewBox="0 0 100 80" width="40" height="40">
+              <rect width="100" height="20"></rect>
+              <rect y="30" width="100" height="20"></rect>
+              <rect y="60" width="100" height="20"></rect>
+            </svg>
+          </label>
+          <input type="checkbox" name="" id="menu_hamburguesa"></input>
           <nav className="navHeader">
             <ul className="listAccess">
               <li>
