@@ -1,5 +1,4 @@
 #container-view-phrases {
-    margin-left: 10px;
     width: 100%;
     height: auto;
     flex-grow: 1; 
@@ -27,7 +26,9 @@
     padding: 15px;
     position: relative;
 }
-
+.card-header h2 {
+    font-size: 20px;
+}
 .card-content {
     height: 100%;
     width: 100%;
@@ -82,3 +83,10 @@
   .card-header:hover .back {
     transform: rotateY(0deg); 
   }
+
+
+  @media (max-width: 799px) {
+    #container-view-phrases {
+        width: 70%;
+    }
+}
