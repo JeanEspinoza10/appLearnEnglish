@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./viewphrases.css";
 export const ViewPhrases = ({phrasesID, data}) => {
     const [fileSound, setfileSound] = useState(null)
-  
+    const [fileImg, setfileImg] = useState(null)
     const generateCard = () => {
       if (data) {
         return data.map((value)=>{
@@ -16,7 +16,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
                 </header>
                 <main className="card-content">
                   <figure>
-                    
+                    <img src={fileImg} alt="image-phrases" />
                   </figure>
                   <audio className="card-audio" src={fileSound} controls>
                   Listening Phrases
@@ -50,6 +50,21 @@ export const ViewPhrases = ({phrasesID, data}) => {
           const base64Data = responseJson.data[0].file_content_base64
           const audioDataUrl = `data:audio/mp3;base64,${base64Data}`
           setfileSound(audioDataUrl)
+        })
+        .catch((error)=>{
+          console.log("Mistake error")
+        })
+        fetch(`http://3.14.149.64/services/free/img/${phrasesID}`)
+        .then((response) => {
+          if(!response.ok) {
+            console.log("Mistake")
+          }
+          return response.json()
+        })
+        .then((responseJson)=>{
+          const base64Data = responseJson.data[0].file_content_base64
+          const imgDataUrl = `data:image/png;base64,${base64Data}`
+          setfileImg(imgDataUrl)
         })
         .catch((error)=>{
           console.log("Mistake error")
