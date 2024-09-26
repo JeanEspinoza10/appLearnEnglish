@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-
+import { Load } from "@components/loaders/Load";
 import "./viewphrases.css";
 export const ViewPhrases = ({phrasesID, data}) => {
+
+    const [loading, setloading] = useState(true)
     const [fileSound, setfileSound] = useState(null)
     const [fileImg, setfileImg] = useState(null)
+
     const generateCard = () => {
       if (data) {
         return data.map((value)=>{
@@ -16,7 +19,9 @@ export const ViewPhrases = ({phrasesID, data}) => {
                 </header>
                 <main className="card-content">
                   <figure>
-                    <img src={fileImg} alt="image-phrases" />
+                    {
+                      loading ? <Load/>: <img src={fileImg} alt="image-phrases" />
+                    }
                   </figure>
                   <audio className="card-audio" src={fileSound} controls>
                   Listening Phrases
@@ -39,6 +44,9 @@ export const ViewPhrases = ({phrasesID, data}) => {
     }
     useEffect(() => {
       if (phrasesID) {
+        setfileSound(null)
+        setfileImg(null)
+        setloading(true)
         fetch(`http://3.14.149.64/services/free/sound/${phrasesID}`)
         .then((response) => {
           if(!response.ok) {
@@ -65,6 +73,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
           const base64Data = responseJson.data[0].file_content_base64
           const imgDataUrl = `data:image/png;base64,${base64Data}`
           setfileImg(imgDataUrl)
+          setloading(false)
         })
         .catch((error)=>{
           console.log("Mistake error")
@@ -74,7 +83,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
 
   return (
     <>
-      <section id="container-view-phrases">{generateCard()}</section>
+       <section id="container-view-phrases">{generateCard()}</section>
     </>
   );
 };

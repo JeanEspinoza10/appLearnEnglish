@@ -72,6 +72,7 @@
 
 /*Styles for windows from 0 a 400px*/
 @media (min-width: 799px) {
+    
     .label_hamburger {
          display: none;
     }
