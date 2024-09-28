@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { AuthContext, useAuth } from '@components/auth/Auth'
+import {  useAuth } from '@components/auth/Auth'
 import { FormLogin } from '../form/FormLogin'
 
 

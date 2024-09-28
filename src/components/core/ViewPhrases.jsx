@@ -47,7 +47,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
         setfileSound(null)
         setfileImg(null)
         setloading(true)
-        fetch(`http://3.14.149.64/services/free/sound/${phrasesID}`)
+        fetch(`https://ingles.appdevelopmentapis.site/services/free/sound/${phrasesID}`)
         .then((response) => {
           if(!response.ok) {
             console.log("Mistake")
@@ -62,7 +62,7 @@ export const ViewPhrases = ({phrasesID, data}) => {
         .catch((error)=>{
           console.log("Mistake error")
         })
-        fetch(`http://3.14.149.64/services/free/img/${phrasesID}`)
+        fetch(`https://ingles.appdevelopmentapis.site/services/free/img/${phrasesID}`)
         .then((response) => {
           if(!response.ok) {
             console.log("Mistake")
@@ -78,6 +78,11 @@ export const ViewPhrases = ({phrasesID, data}) => {
         .catch((error)=>{
           console.log("Mistake error")
         })
+      }
+      return () => {
+        setfileSound(null)
+        setfileImg(null)
+        setloading(true)
       }
     },[phrasesID])
 

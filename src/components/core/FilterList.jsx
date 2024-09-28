@@ -28,7 +28,7 @@ export const FilterList = ({ setPhrasesID, phrasesID, data, setData}) => {
   };
 
   useEffect(()=>{
-    fetch('http://3.14.149.64/services/free/phrases')
+    fetch('https://ingles.appdevelopmentapis.site/services/free/phrases')
     .then((response)=>{
       if(!response.ok) {
         setError(true);

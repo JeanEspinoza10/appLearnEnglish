@@ -34,7 +34,7 @@ export function FormRegister({functionExecute}) {
     return (
         <>
             <section className="container-login">
-                <div className="heading">Registrar</div>
+                <div className="heading">Datos Personales</div>
                 <form className="formLogin" onSubmit={handleSubmit}>
                     <div className="form-name">
                         <input

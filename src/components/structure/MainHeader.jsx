@@ -1,25 +1,23 @@
 import React, { useState } from "react";
-import "./mainheader.css";
 import ImageHeader from '@assets/images/header.png'
 import { Button } from "@components/buttons/Button";
 import { useNavigate, NavLink } from "react-router-dom";
+import "./mainheader.css";
+import { useAuth } from "@components/auth/Auth";
 
-export const MainHeader = ({ accesLogin, setaccesLogin }) => {
+export const MainHeader = () => {
   const navigate = useNavigate();
-  
+  const {user, isAuthenticated} = useAuth()
+
   // Get component of Login
   const get_login = (e) => {
     e.preventDefault();
     navigate("/login");
   };
 
-  const value_button = {
-    name: "Ingresar",
-    function_button: get_login,
-  };
-
   return (
     <>
+      
       <header className="mainHeader">
         <div className="mainHeader-container">
           <img
@@ -37,60 +35,65 @@ export const MainHeader = ({ accesLogin, setaccesLogin }) => {
           </label>
           <input type="checkbox" name="" id="menu_hamburguesa"></input>
           <nav className="navHeader">
-            <ul className="listAccess">
-              <li>
-                <NavLink
-                  to="/home"
-                  style={({ isActive }) => {
-                    return {
-                      textDecoration: isActive ? "underline" : "none",
-                    };
-                  }}
-                >
-                  Nosotros
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/service"
-                  style={({ isActive }) => {
-                    return {
-                      textDecoration: isActive ? "underline" : "none",
-                    };
-                  }}
-                >
-                  Servicios
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/learning"
-                  style={({ isActive }) => {
-                    return {
-                      textDecoration: isActive ? "underline" : "none",
-                    };
-                  }}
-                >
-                  Aprendiendo
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  style={({ isActive }) => {
-                    return {
-                      textDecoration: isActive ? "underline" : "none",
-                    };
-                  }}
-                >
-                  Contacto
-                </NavLink>
-              </li>
-              <Button
-                name={value_button.name}
-                executeFunction={value_button.function_button}
-              />
-            </ul>
+              {
+                isAuthenticated? (
+                <div>
+                  {user.name}
+                </div>              
+              ):(
+                <ul className="listAccess">
+                <li>
+                  <NavLink
+                    to="/home"
+                    style={({ isActive }) => {
+                      return {
+                        textDecoration: isActive ? "underline" : "none",
+                      };
+                    }}
+                  >
+                    Nosotros
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/service"
+                    style={({ isActive }) => {
+                      return {
+                        textDecoration: isActive ? "underline" : "none",
+                      };
+                    }}
+                  >
+                    Servicios
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/learning"
+                    style={({ isActive }) => {
+                      return {
+                        textDecoration: isActive ? "underline" : "none",
+                      };
+                    }}
+                  >
+                    Aprendiendo
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/contact"
+                    style={({ isActive }) => {
+                      return {
+                        textDecoration: isActive ? "underline" : "none",
+                      };
+                    }}
+                  >
+                    Contacto
+                  </NavLink>
+                </li>
+                <Button name="Ingresar" executeFunction={get_login} />
+              </ul>
+                )
+              }
           </nav>
         </div>
       </header>

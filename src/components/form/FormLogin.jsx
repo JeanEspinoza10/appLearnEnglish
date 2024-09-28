@@ -10,9 +10,11 @@ export function FormLogin({}) {
     password: "",
   });
 
+
   //Control the form
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
   };
 
   //Control value for email and password
@@ -31,7 +33,7 @@ export function FormLogin({}) {
     <>
       <section className="container-login">
         <div className="container-modal">
-          <div className="heading">Ingresar</div>
+          <div className="heading">Datos</div>
           <form className="formLogin" onSubmit={handleSubmit}>
             <div className="form-email">
               <input

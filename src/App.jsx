@@ -19,13 +19,12 @@ Render My Application
 
 function App() {
   // State controller render of login,service,contact,Support
-  const [accesLogin, setaccesLogin] = useState(false);
   
   
   return (
     <>
       <BrowserRouter>
-        <MainHeader accesLogin={accesLogin} setaccesLogin={setaccesLogin} />
+        <MainHeader/>
         <main id="container-main-render">
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />

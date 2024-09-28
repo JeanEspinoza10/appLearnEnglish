@@ -8,16 +8,17 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState({
+    name:'',
+    email:'',
+    jwt:''
+  })
+  
   const [isAuthenticated, setisAuthenticated] = useState(false);
-  const login = () => {
-    setisAuthenticated(true);
-  };
-  const logout = () => {
-    setisAuthenticated(false);
-  };
+  
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, setisAuthenticated, user, setUser}}>
       {children}
     </AuthContext.Provider>
   );
