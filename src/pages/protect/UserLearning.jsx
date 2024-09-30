@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useState } from "react";
-import './userLearning.css'
+import './userlearning.css'
 import { LearningContent } from '@components/core/LearningContent';
 import { LearningCreate } from '@components/core/LearningCreate';
 export const UserLearning = () => {
