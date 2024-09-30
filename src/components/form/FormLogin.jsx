@@ -1,20 +1,55 @@
 import React from 'react';
-import { useState } from "react";
-import {  NavLink } from "react-router-dom";
+import { useState,useEffect } from "react";
+import {  useNavigate, NavLink } from "react-router-dom";
+import { useAuth } from '@components/auth/Auth';
+import { authLogin,validateToken } from '@utils/authService';
+
 import "./form.css";
+import { Load } from '../loaders/Load';
 
 export function FormLogin({}) {
-  //State Initial
+  // State initial for auth
+  const {user,setUser, setisAuthenticated} = useAuth()
+  const navigate = useNavigate();
+
+  //State Initial for form
   const [formState, setformState] = useState({
     email: "",
     password: "",
   });
 
+  // Control Login
+  const [isLoadingLogin, setisLoadingLogin] = useState(false)
+
 
   //Control the form
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      setisLoadingLogin(true)
+      const response = await authLogin(formState.email, formState.password)
+      const {code , data} = response
+      if (code === 200) {
+        setisAuthenticated(true)
+        const newUser = {
+          ...user,
+          name: data[0].name,
+          email: formState.email,
+          jwt: data[0].access_token
+        }
+        setUser(newUser)
+        navigate("/users", { replace: true });
+        setisLoadingLogin(false)
+        localStorage.setItem('myData', JSON.stringify(newUser));
+      }
+      else {
+        setisLoadingLogin(false)
+      }
+    } catch (error) {
+      setisLoadingLogin(false)
+    }
     
+
   };
 
   //Control value for email and password
@@ -29,10 +64,40 @@ export function FormLogin({}) {
     };
     setformState(newFormState);
   };
+
+  // UseEffect to get the user data from localStorage
+  useEffect(() => {
+    const userData = localStorage.getItem('myData');
+    if (userData) {
+      const { name, jwt, email } = JSON.parse(userData);
+      const fetchData = async () => {
+        try {
+          const response = await validateToken(jwt);
+          if (response.code === 200) {
+            setisAuthenticated(true)
+            const newUser = {
+              ...user,
+              name: name,
+              email: email,
+              jwt: jwt
+            }
+            setUser(newUser)
+            navigate("/users", { replace: true });
+          }
+     
+        } catch (error) {
+          setisAuthenticated(false)
+        }
+      };
+      fetchData();  
+    }
+  }, []);  
+
   return (
     <>
       <section className="container-login">
-        <div className="container-modal">
+        {
+          isLoadingLogin ? <Load/> : <div className="container-modal">
           <div className="heading">Datos</div>
           <form className="formLogin" onSubmit={handleSubmit}>
             <div className="form-email">
@@ -73,7 +138,7 @@ export function FormLogin({}) {
               >
                 Registrarse
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/login"
                 style={({ isActive, isPending, isTransitioning }) => {
                   return {
@@ -83,9 +148,11 @@ export function FormLogin({}) {
                 }}
               >
                 Ovlidar Contraseña
-              </NavLink>
+              </NavLink> */}
           </nav>
         </div>
+        }
+        
       </section>
     </>
   );

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ImageHeader from '@assets/images/header.png'
 import { Button } from "@components/buttons/Button";
 import { useNavigate, NavLink } from "react-router-dom";
-import "./mainheader.css";
 import { useAuth } from "@components/auth/Auth";
+import "./mainheader.css";
+import { CardInformation } from "./CardInformation";
 
 export const MainHeader = () => {
   const navigate = useNavigate();
@@ -37,9 +38,7 @@ export const MainHeader = () => {
           <nav className="navHeader">
               {
                 isAuthenticated? (
-                <div>
-                  {user.name}
-                </div>              
+                <CardInformation/>             
               ):(
                 <ul className="listAccess">
                 <li>
@@ -79,7 +78,7 @@ export const MainHeader = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
+                  {/* <NavLink
                     to="/contact"
                     style={({ isActive }) => {
                       return {
@@ -88,7 +87,7 @@ export const MainHeader = () => {
                     }}
                   >
                     Contacto
-                  </NavLink>
+                  </NavLink> */}
                 </li>
                 <Button name="Ingresar" executeFunction={get_login} />
               </ul>

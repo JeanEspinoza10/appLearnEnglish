@@ -1,0 +1,136 @@
+.container-user-learning {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    gap: 10px;
+}
+.container-user-learning-main-all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-user-learning-main button {
+    width: 250px;
+    height: 50px;
+    background-color: #9B59B6;
+    color: #FFFFFF; 
+    border: none;
+    border-radius: 12px; 
+    padding: 10px 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease;
+}
+.container-user-learning aside {
+    width: 30%;
+}
+
+.container-user-learning aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-user-learning aside nav button {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .container-user-learning aside nav button:hover {
+    background-color:rgba(13, 60, 233);
+    color: white;
+  }
+
+  .container-user-learning aside nav button.clicked {
+    background-color:rgba(13, 60, 233);
+    color: white;
+  }
+.container-user-learning-main {
+    width: 70%;
+    height: auto;
+    margin-top: 0px;
+    
+        
+}
+
+.container-user-learning-main #container-phrases-list {
+    
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    padding: 0px 0px 0px 0px;
+}
+.container-user-learning-main #container-phrases-list button {
+    margin: 0px;
+}
+
+.container-user-learning-main #container-view-phrases {
+    height: auto;
+    width: auto;
+}
+
+.container-user-learning .container-login {
+    margin: 0px;
+}
+
+  /*Styles for windows from 0 a 400px*/
+@media (max-width: 799px) {
+    .container-user-learning {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin: 0px 0px 20px 0px;
+        padding: 0px;
+        height: auto;
+    }
+    .container-user-learning aside {
+        width: 100%;
+        padding-top: 20px;
+    }
+    .container-user-learning aside nav button {
+        width: 150px;
+        transition: all 0.2s ease-in-out;
+        font-size: 15px;
+      }
+    .container-user-learning aside nav {
+        justify-content: center;
+        align-items: center;
+    }
+    .container-user-learning-main{
+        width: auto;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .container-user-learning-main #container-phrases-list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 10px;   
+        padding: 10px;
+    }
+    .container-user-learning-main #container-phrases-list button {
+        width: 200px;
+    }
+
+    .container-user-learning-main #container-view-phrases {
+        height: auto;
+        width:  50%;
+        margin-left: 20px;
+    }
+   
+}

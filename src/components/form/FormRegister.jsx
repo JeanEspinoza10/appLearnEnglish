@@ -1,8 +1,19 @@
 import { useState } from "react";
 import React from 'react';
-import {  NavLink } from "react-router-dom";
-export function FormRegister({functionExecute}) {
+import {  NavLink, useNavigate } from "react-router-dom";
+import { Load } from "../loaders/Load";
+import { authRegister } from "@utils/authService";
+import { Error } from "@components/loaders/Error";
+export function FormRegister() {
     
+    const navigate = useNavigate();
+    
+    // Control Login
+    const [isLoading, setisLoading] = useState(false)
+    const [error, setError] = useState(false)
+
+    const [messageError, setmMessageError] = useState("")
+
     //State Initial
     const [formState, setformState] = useState(
         {
@@ -13,10 +24,31 @@ export function FormRegister({functionExecute}) {
         }
     );
 
+
     //Control the form
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        functionExecute()
+        try {
+            setisLoading(true)
+            if(formState.passwordRegister !== formState.passwordConfirmRegister) {
+                setError(true)
+                setmMessageError("Las contraseñas no coinciden")
+                setisLoading(false)
+                return
+            }
+            const response = await authRegister(formState.nameRegister, formState.emailRegister, formState.passwordRegister);
+            
+            const {code, message} = response;
+            if (code === 200) {
+                setisLoading(false)
+                navigate("/login", { replace: true });
+            }
+            else {
+                setError(true)
+            }
+        }catch (error) {
+            setError(true)
+        }
     }
 
     //Control value for email and password
@@ -33,6 +65,11 @@ export function FormRegister({functionExecute}) {
     }
     return (
         <>
+        {isLoading ? (
+            <Load />
+        ) : error ? (
+            <Error message={messageError} handleClose= {setError} />
+        ) : (
             <section className="container-login">
                 <div className="heading">Datos Personales</div>
                 <form className="formLogin" onSubmit={handleSubmit}>
@@ -87,31 +124,30 @@ export function FormRegister({functionExecute}) {
                     <button type="submit">Registrar</button>
                 </form>
                 <nav>
-                <NavLink
-                to="/login"
-                style={({ isActive, isPending, isTransitioning }) => {
-                  return {
-                    fontSize: "15px",
-                    textDecoration: isActive? "none" : "underline",
-                  };
-                }}
-              >
-                Ingresar
-              </NavLink>
-              <NavLink
-                to="/register"
-                style={({ isActive, isPending, isTransitioning }) => {
-                  return {
-                    fontSize: "15px",
-                    textDecoration: isActive? "underline" : "none",
-                  };
-                }}
-              >
-                Ovlidar Contraseña
-              </NavLink>
+                    <NavLink
+                        to="/login"
+                        style={({ isActive, isPending, isTransitioning }) => ({
+                            fontSize: "15px",
+                            textDecoration: isActive ? "none" : "underline",
+                        })}
+                    >
+                        Ingresar
+                    </NavLink>
+                    {/* 
+                    <NavLink
+                        to="/register"
+                        style={({ isActive, isPending, isTransitioning }) => ({
+                            fontSize: "15px",
+                            textDecoration: isActive ? "underline" : "none",
+                        })}
+                    >
+                        Olvidar Contraseña
+                    </NavLink>
+                    */}
                 </nav>
             </section>
-        </>
+        )}
+    </>
     )
 }
 

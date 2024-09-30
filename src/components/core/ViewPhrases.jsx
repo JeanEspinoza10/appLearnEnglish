@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Load } from "@components/loaders/Load";
+import { useAuth } from "@components/auth/Auth";
 import "./viewphrases.css";
-export const ViewPhrases = ({phrasesID, data}) => {
-
+export const ViewPhrases = ({phrasesID, data, url, functionExecuteSound , functionExecuteImg}) => {
+    const {user, isAuthenticated} = useAuth()
+  
     const [loading, setloading] = useState(true)
     const [fileSound, setfileSound] = useState(null)
     const [fileImg, setfileImg] = useState(null)
-
     const generateCard = () => {
       if (data) {
         return data.map((value)=>{
@@ -47,37 +48,39 @@ export const ViewPhrases = ({phrasesID, data}) => {
         setfileSound(null)
         setfileImg(null)
         setloading(true)
-        fetch(`https://ingles.appdevelopmentapis.site/services/free/sound/${phrasesID}`)
-        .then((response) => {
-          if(!response.ok) {
-            console.log("Mistake")
+        const fetchResources = async () => {
+          try {
+            const [audioDataUrl, imgDataUrl] = await Promise.all([
+              functionExecuteSound(url, phrasesID),
+              functionExecuteImg(url, phrasesID)
+            ]);
+            setfileSound(audioDataUrl);
+            setfileImg(imgDataUrl);
+            setloading(false);
+          } catch (error) {
+            console.log("Error while downloading files:", error);
+            setloading(false);
           }
-          return response.json()
-        })
-        .then((responseJson)=>{
-          const base64Data = responseJson.data[0].file_content_base64
-          const audioDataUrl = `data:audio/mp3;base64,${base64Data}`
-          setfileSound(audioDataUrl)
-        })
-        .catch((error)=>{
-          console.log("Mistake error")
-        })
-        fetch(`https://ingles.appdevelopmentapis.site/services/free/img/${phrasesID}`)
-        .then((response) => {
-          if(!response.ok) {
-            console.log("Mistake")
+        };
+        const fetchResourcesUser = async () => {
+          try {
+            const [audioDataUrl, imgDataUrl] = await Promise.all([
+              functionExecuteSound(url, phrasesID,user.jwt),
+              functionExecuteImg(url, phrasesID,user.jwt)
+            ]);
+            setfileSound(audioDataUrl);
+            setfileImg(imgDataUrl);
+            setloading(false);
+          } catch (error) {
+            console.log("Error while downloading files:", error);
+            setloading(false);
           }
-          return response.json()
-        })
-        .then((responseJson)=>{
-          const base64Data = responseJson.data[0].file_content_base64
-          const imgDataUrl = `data:image/png;base64,${base64Data}`
-          setfileImg(imgDataUrl)
-          setloading(false)
-        })
-        .catch((error)=>{
-          console.log("Mistake error")
-        })
+        };
+        if (isAuthenticated) {
+          fetchResourcesUser();
+        } else {
+          fetchResources();
+        }  
       }
       return () => {
         setfileSound(null)
