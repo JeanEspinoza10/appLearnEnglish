@@ -1,5 +1,5 @@
 import React from "react";
-import './createSucces.css'
+import './createsucces.css'
 export const CreateSucces = ({ onClose, phrase }) => {
   return (
     <div className="modal-overlay">
