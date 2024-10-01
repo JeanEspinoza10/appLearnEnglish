@@ -1,9 +1,9 @@
 .container-user-learning {
     width: 100%;
-    height: 800px;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin-top: 35px;
     gap: 10px;
 }
 .container-user-learning-main-all {
@@ -76,12 +76,17 @@
 }
 
 .container-user-learning-main #container-view-phrases {
-    height: auto;
+    height: 100%;
     width: auto;
 }
 
+
+
 .container-user-learning .container-login {
     margin: 0px;
+}
+.container-user-learning .formLogin button {
+    width: 100%;
 }
 
   /*Styles for windows from 0 a 400px*/

@@ -4,6 +4,9 @@ import { useState } from "react";
 import "./form.css";
 import { useAuth } from "@components/auth/Auth";
 import { Load } from '@components/loaders/Load';
+import { Error } from "@components/loaders/Error";
+import { CreateSucces } from "@components/loaders/CreateSucces";
+
 export const FormCreatePhrases = ({functionExecute}) => {
     const {user} = useAuth()
    //State Initial
@@ -12,10 +15,13 @@ export const FormCreatePhrases = ({functionExecute}) => {
         phrase:""
     }
     );
+    const [phraseTranslation, setPhraseTranslation] = useState("")
 
-    // State for loading or error
+    // State for loading or error or create
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
+    const [messageError, setmMessageError] = useState("")
+    const [succes, setSucces] = useState(false)
 
 //Control the form
 const handleSubmit = async(e) => {
@@ -23,7 +29,7 @@ const handleSubmit = async(e) => {
     try {
         setLoading(true)
         const response = await functionExecute(user.jwt, formState.phrase);
-        const {code, message} = response;
+        const {code, message,data} = response;
         if (code === 200) {
             setLoading(false)
             setError(false)
@@ -32,14 +38,18 @@ const handleSubmit = async(e) => {
                 phrase:""
             }
             setformState(newFormState)
-            console.log(response)
+            setPhraseTranslation(data.title)
+            setSucces(true)
         }
         else {
             setLoading(false)
             setError(true)
+            setmMessageError(message)
         }
     } catch (err) {
+        setLoading(false)
         setError(true)
+        setmMessageError("Error al crear la frase")
     }
 
     
@@ -61,7 +71,11 @@ return (
   <>
     {loading ? (
       <Load/>
-    ) : (
+    ) : error ? (
+      <Error message={messageError} handleClose= {setError} />
+    ) : succes ? (
+      <CreateSucces onClose={setSucces} phrase={phraseTranslation} />
+    ): (
       <section className="container-login">
         <div className="heading">Ingresa la frase</div>
         <form className="formLogin" onSubmit={handleSubmit}>

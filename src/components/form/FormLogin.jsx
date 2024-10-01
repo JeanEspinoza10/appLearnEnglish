@@ -95,9 +95,9 @@ export function FormLogin({}) {
 
   return (
     <>
-      <section className="container-login">
-        {
-          isLoadingLogin ? <Load/> : <div className="container-modal">
+      {isLoadingLogin ? <Load /> :(
+        <section className="container-login">
+        <div className="container-modal">
           <div className="heading">Datos</div>
           <form className="formLogin" onSubmit={handleSubmit}>
             <div className="form-email">
@@ -128,17 +128,17 @@ export function FormLogin({}) {
           </form>
           <nav>
             <NavLink
-                to="/register"
-                style={({ isActive, isPending, isTransitioning }) => {
-                  return {
-                    fontSize: "15px",
-                    textDecoration: isActive? "none" : "underline",
-                  };
-                }}
-              >
-                Registrarse
-              </NavLink>
-              {/* <NavLink
+              to="/register"
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontSize: "15px",
+                  textDecoration: isActive ? "none" : "underline",
+                };
+              }}
+            >
+              Registrarse
+            </NavLink>
+            {/* <NavLink
                 to="/login"
                 style={({ isActive, isPending, isTransitioning }) => {
                   return {
@@ -151,9 +151,10 @@ export function FormLogin({}) {
               </NavLink> */}
           </nav>
         </div>
-        }
-        
       </section>
+
+      ) }
+      
     </>
   );
 }
