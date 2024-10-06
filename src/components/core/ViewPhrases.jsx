@@ -58,7 +58,6 @@ export const ViewPhrases = ({phrasesID, data, url, functionExecuteSound , functi
             setfileImg(imgDataUrl);
             setloading(false);
           } catch (error) {
-            console.log("Error while downloading files:", error);
             setloading(false);
           }
         };
@@ -72,7 +71,6 @@ export const ViewPhrases = ({phrasesID, data, url, functionExecuteSound , functi
             setfileImg(imgDataUrl);
             setloading(false);
           } catch (error) {
-            console.log("Error while downloading files:", error);
             setloading(false);
           }
         };

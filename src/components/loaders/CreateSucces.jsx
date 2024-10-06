@@ -6,7 +6,8 @@ export const CreateSucces = ({ onClose, phrase }) => {
       <div className="modal-content">
         <div className="modal-header">
             <h3>¡Éxito!</h3>
-            <p>Frase: {phrase}</p>
+            <p>Mensaje</p>
+            <p>{phrase}</p>
         </div>
         <button onClick={() => onClose(false)} className="modal-button">
           Back

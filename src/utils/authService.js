@@ -13,13 +13,15 @@ export const authLogin =  async(email, password) => {
     })
     .then((response) => {
         if(!response.ok) {
-            throw new Error('Something went wrong')
+            return response.json()
         }
         return response.json()
     })
     .then((responseJson) => {
         return responseJson
-    })
+    }).catch((error)=>{
+        return error
+      }) 
     }
 
 export const authRegister =  async(name, email, password) => {
@@ -35,14 +37,13 @@ export const authRegister =  async(name, email, password) => {
         }),
     })
     .then((response) => {
-        if(!response.ok) {
-            throw new Error('Something went wrong')
-        }
         return response.json()
     })
     .then((responseJson) => {
         return responseJson
-    })
+    }).catch((error)=>{
+       return error
+      })  
 }
 
 export const validateToken = async (token) => {
@@ -60,7 +61,7 @@ export const validateToken = async (token) => {
         return response.json(); 
     })
     .catch((error) => {
-        throw error; // Re-lanzar el error para manejarlo en la llamada
+        throw error;
     });
 };
 
@@ -68,7 +69,7 @@ export const downloadFileSound = async (url, id) => {
     return fetch(`${url}/sound/${id}`)
         .then((response) => {
           if(!response.ok) {
-            console.log("Mistake")
+            return response.json()
           }
           return response.json()
         })
@@ -78,7 +79,7 @@ export const downloadFileSound = async (url, id) => {
           return audioDataUrl
         })
         .catch((error)=>{
-          console.log("Mistake error")
+          return error
         })    
 }
 
@@ -86,7 +87,7 @@ export const downloadFileImg = async (url, id) => {
     return fetch(`${url}/img/${id}`)
         .then((response) => {
           if(!response.ok) {
-            console.log("Mistake")
+            return response.json()
           }
           return response.json()
         })
@@ -96,7 +97,29 @@ export const downloadFileImg = async (url, id) => {
           return imgDataUrl
         })
         .catch((error)=>{
-          console.log("Mistake error")
+          return error
         })    
 }
 
+export const validateCode = async (email, code) => {
+    return fetch('https://ingles.appdevelopmentapis.site/auth/verification',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email:email,
+            code:code,
+        })
+    })
+    .then(
+        (response) => {
+           return response.json()
+        }
+    )
+    .catch((error)=>{
+        return error
+    })
+
+
+}

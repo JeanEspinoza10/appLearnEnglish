@@ -1,6 +1,7 @@
 import { useEffect,useState} from 'react';
 import { phrases } from "@const/listphrases.js";
 import "./filterlist.css"
+import { Load } from "@components/loaders/Load";
 
 export const FilterList = ({ setPhrasesID, phrasesID, data, loading}) => {
    const onClickPhrases = (event) => {
@@ -26,12 +27,15 @@ export const FilterList = ({ setPhrasesID, phrasesID, data, loading}) => {
   
   return (
     <>
-      <section id="container-phrases-list">
-        {(loading) && (
-          <button>{loading ? "Getting Data" : "An error occurred"}</button>
-        )}
-        {generateListWords(data)}
-      </section>
+      {
+        loading ? (
+          <Load/>
+        ) : (
+          <section id="container-phrases-list">
+            {generateListWords(data)}
+          </section>
+        )
+      }
     </>
   );
 };

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState,useEffect } from "react";
-import {  useNavigate, NavLink } from "react-router-dom";
+import {  useNavigate, NavLink, Form } from "react-router-dom";
 import { useAuth } from '@components/auth/Auth';
 import { authLogin,validateToken } from '@utils/authService';
+import { FormValidateCode } from "./FormValidateCode";
 
 import "./form.css";
 import { Load } from '../loaders/Load';
@@ -20,7 +21,7 @@ export function FormLogin({}) {
 
   // Control Login
   const [isLoadingLogin, setisLoadingLogin] = useState(false)
-
+  const [validation, setValidation] = useState(false)
 
   //Control the form
   const handleSubmit = async (event) => {
@@ -28,12 +29,14 @@ export function FormLogin({}) {
     try {
       setisLoadingLogin(true)
       const response = await authLogin(formState.email, formState.password)
-      const {code , data} = response
+      const {code , data, message} = response
       if (code === 200) {
         setisAuthenticated(true)
+        const nameresponse = data[0].name
+        const firstname = nameresponse.split(' ')[0]
         const newUser = {
           ...user,
-          name: data[0].name,
+          name: firstname,
           email: formState.email,
           jwt: data[0].access_token
         }
@@ -44,6 +47,9 @@ export function FormLogin({}) {
       }
       else {
         setisLoadingLogin(false)
+        if(message==="An error occurred: User needs to verify their code") {
+          setValidation(true)
+        }
       }
     } catch (error) {
       setisLoadingLogin(false)
@@ -95,7 +101,11 @@ export function FormLogin({}) {
 
   return (
     <>
-      {isLoadingLogin ? <Load /> :(
+      {isLoadingLogin ? (
+        <Load />
+      ) : validation? (
+        <FormValidateCode email={formState.email} setValidation={setValidation}/>
+      ) :(
         <section className="container-login">
         <div className="container-modal">
           <div className="heading">Datos</div>
@@ -138,17 +148,17 @@ export function FormLogin({}) {
             >
               Registrarse
             </NavLink>
-            {/* <NavLink
-                to="/login"
+            <NavLink
+                to="/password"
                 style={({ isActive, isPending, isTransitioning }) => {
                   return {
                     fontSize: "15px",
-                    textDecoration: isActive? "underline" : "none",
+                    textDecoration: isActive? "none" : "underline",
                   };
                 }}
               >
                 Ovlidar Contraseña
-              </NavLink> */}
+              </NavLink>
           </nav>
         </div>
       </section>

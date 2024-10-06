@@ -11,7 +11,8 @@ import { Service } from "./pages/service/Service.jsx";
 import { UserLearning } from "./pages/protect/UserLearning.jsx";
 import {Learning} from "./pages/learning/Learning.jsx"
 import { Protect } from "./components/auth/Protect.jsx";
-
+import { FormPassword } from "./components/form/FormPassword.jsx";
+import { FormValidateCode } from "./components/form/FormValidateCode.jsx";
 
 /*
 Render My Application
@@ -34,7 +35,7 @@ function App() {
             <Route path="/login" element={<FormLogin />} />
             <Route path="/register" element={<FormRegister />} />
             <Route path="/learning" element ={<Learning/>}/>
-
+            <Route path="/password" element ={<FormPassword/>}/>
             <Route
               path="/users"
               element={

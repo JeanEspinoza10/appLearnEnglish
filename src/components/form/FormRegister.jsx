@@ -1,9 +1,10 @@
 import { useState } from "react";
-import React from 'react';
-import {  NavLink, useNavigate } from "react-router-dom";
+import {  Form, NavLink, useNavigate } from "react-router-dom";
 import { Load } from "../loaders/Load";
 import { authRegister } from "@utils/authService";
 import { Error } from "@components/loaders/Error";
+import { FormValidateCode } from "./FormValidateCode";
+
 export function FormRegister() {
     
     const navigate = useNavigate();
@@ -11,8 +12,9 @@ export function FormRegister() {
     // Control Login
     const [isLoading, setisLoading] = useState(false)
     const [error, setError] = useState(false)
-
     const [messageError, setmMessageError] = useState("")
+    const [validation, setValidation] = useState(false)
+
 
     //State Initial
     const [formState, setformState] = useState(
@@ -37,16 +39,18 @@ export function FormRegister() {
                 return
             }
             const response = await authRegister(formState.nameRegister, formState.emailRegister, formState.passwordRegister);
-            
             const {code, message} = response;
             if (code === 200) {
                 setisLoading(false)
-                navigate("/login", { replace: true });
+                setValidation(true)
             }
             else {
+                setisLoading(false)
+                setmMessageError(message)
                 setError(true)
             }
         }catch (error) {
+            setmMessageError(error)
             setError(true)
         }
     }
@@ -69,7 +73,9 @@ export function FormRegister() {
             <Load />
         ) : error ? (
             <Error message={messageError} handleClose= {setError} />
-        ) : (
+        ) : validation ? (
+            <FormValidateCode email={formState.emailRegister} setValidation={setValidation}/>
+        ) :(
             <section className="container-login">
                 <div className="heading">Datos Personales</div>
                 <form className="formLogin" onSubmit={handleSubmit}>

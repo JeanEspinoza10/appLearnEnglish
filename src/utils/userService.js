@@ -35,7 +35,7 @@ export const phrasesCreate = async (token, phrase) => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        return response.json();
       }
       return response.json();
     })
@@ -43,7 +43,7 @@ export const phrasesCreate = async (token, phrase) => {
       return responseJson;
     })
     .catch((error) => {
-      console.log("Mistake error",error);
+      return error;
     });
 };
 
@@ -57,7 +57,7 @@ export const downloadFileSoundUser = async (url, id,jwt) => {
   })
     .then((response) => {
       if (!response.ok) {
-        console.log("Mistake");
+        return response.json();
       }
       return response.json();
     })
@@ -67,7 +67,7 @@ export const downloadFileSoundUser = async (url, id,jwt) => {
       return audioDataUrl;
     })
     .catch((error) => {
-      console.log("Mistake error");
+      return error;
     });
 };
 
@@ -81,7 +81,7 @@ export const downloadFileImgUser = async (url, id,jwt) => {
   })
     .then((response) => {
       if (!response.ok) {
-        console.log("Mistake");
+        return response.json();
       }
       return response.json();
     })
@@ -91,6 +91,31 @@ export const downloadFileImgUser = async (url, id,jwt) => {
       return imgDataUrl;
     })
     .catch((error) => {
-      console.log("Mistake error",error);
+      return error
     });
 };
+
+export const changePassword = async (email) => {
+  
+  return fetch("https://ingles.appdevelopmentapis.site/auth/reset_password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+    }),
+  })
+    .then((response) => {
+      if(!response.ok) {
+        return response.json()
+      }
+      return response.json()
+    })
+    .then((responseJson) => {
+      return responseJson
+    })
+    .catch((error) => {
+      return error
+    });
+}
