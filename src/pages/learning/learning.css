@@ -3,12 +3,10 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 20px 20px 20px 0px;
     gap: 25px;  
     animation-name:animarservice ;
-    animation-duration: 2s;
-    margin: 25px 0px 25px 0px;
+    animation-duration: 2s; 
 }
 /* Add Animation */
 @keyframes animarservice {
@@ -16,6 +14,15 @@
     to {top:0; opacity:1}
   }
 
+  .container-learning  h1 {
+    padding-left: 20px;
+  }
+.container-learning p {
+    font-family: 'Open Sans', sans-serif; 
+    font-size: larger; 
+    line-height: 2.5rem; 
+    padding-left: 20px;
+}
 
 .container-learning-phares {
     display: flex;
@@ -24,7 +31,33 @@
     height: auto; 
     justify-content: center;   
     align-items: center;
+    
 }
+.container-learning-phares-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto; 
+    justify-content: center;   
+    align-items: center;
+    gap: 10px;
+}
+
+.container-learning-phares-column button {
+    width: 250px;
+    height: 50px;
+    background-color: #9B59B6;
+    color: #FFFFFF; 
+    border: none;
+    border-radius: 12px; 
+    padding: 10px 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease;
+}
+
 
 @media (max-width: 799px) {
     .container-learning {

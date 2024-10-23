@@ -1,42 +1,91 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { downloadFileSound, downloadFileImg } from "@utils/authService";
-import { FilterList } from '../../components/core/FilterList'
-import { ViewPhrases } from '../../components/core/ViewPhrases'
-import "./learning.css"
+import { FilterList } from "@components/core/FilterList";
+import { ViewPhrases } from "@components/core/ViewPhrases";
+import { Load } from "@components/loaders/Load";
+import { Error } from "@components/loaders/Error";
+import "./learning.css";
+import { Button } from "../../components/buttons/Button";
+
 export const Learning = () => {
-  const [phrasesID, setPhrasesID] = useState(null)
-  const [data, setData] = useState([])
+  const [phrasesID, setPhrasesID] = useState(null);
+  const [data, setData] = useState([]);
+  const [viewDetails, setviewDetailst] = useState(false);
 
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  useEffect(()=>{
-      fetch('https://ingles.appdevelopmentapis.site/services/free/phrases')
-      .then((response)=>{
-        if(!response.ok) {
+  const passwordHintId = useId();
+
+  useEffect(() => {
+    fetch("https://ingles.appdevelopmentapis.site/services/free/phrases")
+      .then((response) => {
+        if (!response.ok) {
           setError(true);
         }
-        return response.json()
+        return response.json();
       })
-      .then((responseJson)=>{
-        setData(responseJson.data)
-        setPhrasesID(responseJson.data[0].id)
-        setLoading(false)
-      })
-      .catch((error)=>{
-        setError(true);
+      .then((responseJson) => {
+        setData(responseJson.data);
+        setPhrasesID(responseJson.data[0].id);
         setLoading(false);
       })
-    },[]);
+      .catch((error) => {
+        setError(true);
+        setLoading(false);
+      });
+  }, []);
 
-  return( 
+  return (
+    <>
+      {loading ? (
+        <Load />
+      ) : error ? (
+        <Error message={messageError} handleClose={setError} />
+      ) : (
         <section className="container-learning">
-                  <h1>Frases</h1>
-                  <main className="container-learning-phares">
-                        <FilterList phrasesID={phrasesID} setPhrasesID={setPhrasesID} data={data} loading={loading}/>
-                        <ViewPhrases phrasesID={phrasesID} data={data} url = {"https://ingles.appdevelopmentapis.site/services/free"} functionExecuteSound={downloadFileSound} functionExecuteImg={downloadFileImg}/>
-                  </main>
+          <h1>Frases</h1>
+          <p>
+            Descubre frases especialmente diseñadas para mejorar tu vocabulario
+            y dominar el inglés con facilidad. ¡Aprovecha esta oportunidad para
+            llevar tu fluidez al siguiente nivel de manera rápida y efectiva!
+          </p>
+          <main className="container-learning-phares">
+            {viewDetails ? (
               
-        </section>)
-
-}
+              <>
+              
+              {
+                // Cambiar la clase de los elementos cuando viewDetails sea true
+                Array.from(document.getElementsByClassName("container-learning-phares")).forEach((element) => {
+                  element.classList.remove("container-learning-phares");
+                  element.classList.add("container-learning-phares-column");
+                })
+              }
+                <ViewPhrases
+                  phrasesID={phrasesID}
+                  data={data}
+                  url={"https://ingles.appdevelopmentapis.site/services/free"}
+                  functionExecuteSound={downloadFileSound}
+                  functionExecuteImg={downloadFileImg}
+                />
+                <button key={passwordHintId} onClick={() => setviewDetailst(false)}>
+                  Regresar
+                </button>
+                
+              </>
+            ) : (
+              <FilterList
+                phrasesID={phrasesID}
+                setPhrasesID={setPhrasesID}
+                data={data}
+                loading={loading}
+                viewDetails={setviewDetailst}
+              />
+            )}
+          </main>
+        </section>
+      )}
+    </>
+  );
+};

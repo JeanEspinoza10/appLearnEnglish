@@ -4,7 +4,7 @@ import {  useNavigate, NavLink, Form } from "react-router-dom";
 import { useAuth } from '@components/auth/Auth';
 import { authLogin,validateToken } from '@utils/authService';
 import { FormValidateCode } from "./FormValidateCode";
-
+import { Error } from "@components/loaders/Error";
 import "./form.css";
 import { Load } from '../loaders/Load';
 
@@ -22,6 +22,8 @@ export function FormLogin({}) {
   // Control Login
   const [isLoadingLogin, setisLoadingLogin] = useState(false)
   const [validation, setValidation] = useState(false)
+  const [error, setError] = useState(false)
+  const [messageError, setMessageError] = useState('')
 
   //Control the form
   const handleSubmit = async (event) => {
@@ -46,13 +48,18 @@ export function FormLogin({}) {
         localStorage.setItem('myData', JSON.stringify(newUser));
       }
       else {
-        setisLoadingLogin(false)
         if(message==="An error occurred: User needs to verify their code") {
+          setisLoadingLogin(false)
           setValidation(true)
+        } else {
+          setisLoadingLogin(false)
+          setError(true)
+          setMessageError(message)
         }
       }
     } catch (error) {
       setisLoadingLogin(false)
+      setError(true)
     }
     
 
@@ -103,6 +110,8 @@ export function FormLogin({}) {
     <>
       {isLoadingLogin ? (
         <Load />
+      ) : error ? (
+        <Error message={messageError} handleClose={setError} />
       ) : validation? (
         <FormValidateCode email={formState.email} setValidation={setValidation}/>
       ) :(

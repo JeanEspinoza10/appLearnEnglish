@@ -88,7 +88,7 @@ export function FormRegister() {
                             onChange={handleChange}
                             placeholder="Nombres y Apellidos"
                             required
-                            minlength="10"
+                            minLength="10"
                             autoComplete="users"
                         />
                     </div>
@@ -101,7 +101,7 @@ export function FormRegister() {
                             onChange={handleChange}
                             placeholder="Correo"
                             required
-                            minlength="10"
+                            minLength="10"
                             autoComplete="username"
                         />
                     </div>
@@ -113,7 +113,7 @@ export function FormRegister() {
                             value={formState.passwordRegister}
                             onChange={handleChange}
                             autoComplete="current-password"
-                            minlength="10"
+                            minLength="10"
                             placeholder="Contraseña"
                             required
                         />
@@ -127,7 +127,7 @@ export function FormRegister() {
                             onChange={handleChange}
                             autoComplete="current-password"
                             placeholder="Confirmar Contraseña"
-                            minlength="10"
+                            minLength="10"
                             required
                         />
                     </div>

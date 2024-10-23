@@ -1,29 +1,29 @@
-#container-view-phrases {
+.container-view-phrases {
     width: 100%;
-    height: 100%;
+    min-height: 100px;
     flex-grow: 1; 
-    margin: 0px 20px 0px 0px;
+    margin-left: 20px;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #D7BDE2; 
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
+    background-color:#F1F3F4 ;
+    
 }
 .card-information-phrases {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    height: auto;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    padding: 0px;
 }
 
 .card-header {
+    min-height: 100px;
     width: 100%;
-    height: 100%;
     background-color: #F5EEF8;
     color: #6C3483;  
-    text-align: center;
-    padding: 15px;
+    padding: 0px;
     position: relative;
 }
 
@@ -32,15 +32,14 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .card-content figure {
-    width: 100%;
-    height: 350px;
+    height: auto;
+    width: auto;
 }
 
-.card-content img {
+.card-information-phrases img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -48,8 +47,11 @@
 }
 
 .card-footer {
+    height: 100%;
+    width: auto;
     background-color: #F8F4F9;
     padding: 16px;
+    border-radius: 30px;
 }
 
 .card-footer p {
@@ -58,9 +60,27 @@
     font-size: 1.4rem;
 }
 
+.wrapper-audio {
+    margin: 0px;
+    padding: 0px;
+    height: 100px;
+    display: inline-block;
+    width: auto;
+}
+
 .card-audio {
     width: 100%;
+    height: 100%;
+    border-radius: 0;  /* Elimina el borde redondeado */
+    overflow: hidden;
 }
+.card-audio::-webkit-media-controls {
+    border-radius: 0;  /* Elimina el borde redondeado en navegadores Webkit */
+  }
+  
+  .card-audio::-webkit-media-controls-panel {
+    border-radius: 0;  /* Aplica el estilo también a los controles del reproductor */
+  }
 
 .front, .back {
     width: 100%;
@@ -70,6 +90,10 @@
     justify-content: center;
     align-items: center;
     transition: transform 0.6s;
+    text-align: center;
+    word-wrap: break-word; /* Romper palabras largas */
+    overflow-wrap: break-word; /* Asegura el comportamiento en todos los navegadores */
+    white-space: normal; /* Permite que el texto fluya a la siguiente línea */
   }
 
   .back {
@@ -89,7 +113,10 @@
 
 
   @media (max-width: 799px) {
-    #container-view-phrases {
-        width: 70%;
+
+    .card-information-phrases {
+        grid-template-columns: repeat(1, 1fr);
     }
+
+
 }
