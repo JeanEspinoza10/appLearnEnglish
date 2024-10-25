@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useId } from 'react';
 import { NavLink } from "react-router-dom";
 import {data_service } from '@const/serviceLink.js';
+import { useAuth } from '@components/auth/Auth';
 import "../service/service.css";
 
 const generateCards = (data) => {
@@ -17,7 +18,12 @@ const generateCards = (data) => {
 };
 
 export const Service = () => {
+  const {setisAuthenticated} = useAuth()
   const passwordHintId = useId()
+  useEffect(() => {
+    setisAuthenticated(false)
+  }, [])
+
   return (
     <>
       <section className="container-service">

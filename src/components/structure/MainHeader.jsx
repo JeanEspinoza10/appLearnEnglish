@@ -3,8 +3,8 @@ import ImageHeader from '@assets/images/header.png'
 import { Button } from "@components/buttons/Button";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "@components/auth/Auth";
-import "./mainheader.css";
 import { CardInformation } from "./CardInformation";
+import "./mainheader.css";
 
 export const MainHeader = () => {
   const navigate = useNavigate();

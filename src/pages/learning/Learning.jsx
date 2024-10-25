@@ -4,24 +4,30 @@ import { FilterList } from "@components/core/FilterList";
 import { ViewPhrases } from "@components/core/ViewPhrases";
 import { Load } from "@components/loaders/Load";
 import { Error } from "@components/loaders/Error";
+import { useAuth } from '@components/auth/Auth';
 import "./learning.css";
-import { Button } from "../../components/buttons/Button";
+
 
 export const Learning = () => {
+  const {setisAuthenticated} = useAuth()
   const [phrasesID, setPhrasesID] = useState(null);
   const [data, setData] = useState([]);
   const [viewDetails, setviewDetailst] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [messageError, setMessageError] = useState('')
 
   const passwordHintId = useId();
 
   useEffect(() => {
+    setisAuthenticated(false)
     fetch("https://ingles.appdevelopmentapis.site/services/free/phrases")
       .then((response) => {
         if (!response.ok) {
-          setError(true);
+          setLoading(false);
+          setMessageError(error)
+          setError(true);          
         }
         return response.json();
       })
@@ -31,6 +37,7 @@ export const Learning = () => {
         setLoading(false);
       })
       .catch((error) => {
+        setMessageError(error)
         setError(true);
         setLoading(false);
       });

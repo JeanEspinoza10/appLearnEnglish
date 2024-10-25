@@ -3,6 +3,7 @@ import { useAuth } from "@components/auth/Auth";
 import { Button } from "@components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import './cardinformation.css'
+
 export const CardInformation = () => {
     const {user,setUser, setisAuthenticated} = useAuth()
     const navigate = useNavigate();

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuth } from '@components/auth/Auth';
 import ImageHome from '@assets/images/home.png'
 import './home.css'
 
 
 export const Home = () => {
+  const {setisAuthenticated} = useAuth()
+  useEffect(() => {
+    setisAuthenticated(false)
+  }, [])
+  
   return (
     <section className="container-home">
       <div className="container-home-description">

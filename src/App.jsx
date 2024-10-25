@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { FormLogin } from "./components/form/FormLogin.jsx";
 import { FormRegister } from "./components/form/FormRegister.jsx";
 import { FormContact } from "./components/form/FormContact.jsx";
@@ -12,7 +11,7 @@ import { UserLearning } from "./pages/protect/UserLearning.jsx";
 import {Learning} from "./pages/learning/Learning.jsx"
 import { Protect } from "./components/auth/Protect.jsx";
 import { FormPassword } from "./components/form/FormPassword.jsx";
-import { FormValidateCode } from "./components/form/FormValidateCode.jsx";
+import { useAuth } from '@components/auth/Auth';
 
 /*
 Render My Application
@@ -20,13 +19,17 @@ Render My Application
 
 function App() {
   // State controller render of login,service,contact,Support
-  
-  
+  const {isAuthenticated} = useAuth()
+
   return (
     <>
       <BrowserRouter>
-        <MainHeader/>
-        <main id="container-main-render">
+        {!isAuthenticated && <MainHeader />}
+
+        <main
+          id="container-main-render"
+          className={!isAuthenticated ? "container-main-render-all" : "container-main-render-all-user"}
+        >
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
@@ -34,8 +37,8 @@ function App() {
             <Route path="/contact" element={<FormContact />} />
             <Route path="/login" element={<FormLogin />} />
             <Route path="/register" element={<FormRegister />} />
-            <Route path="/learning" element ={<Learning/>}/>
-            <Route path="/password" element ={<FormPassword/>}/>
+            <Route path="/learning" element={<Learning />} />
+            <Route path="/password" element={<FormPassword />} />
             <Route
               path="/users"
               element={
@@ -46,7 +49,7 @@ function App() {
             />
           </Routes>
         </main>
-        <MainFooter />
+        {!isAuthenticated && <MainFooter />}
       </BrowserRouter>
     </>
   );

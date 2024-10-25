@@ -5,8 +5,8 @@ import { useAuth } from '@components/auth/Auth';
 import { authLogin,validateToken } from '@utils/authService';
 import { FormValidateCode } from "./FormValidateCode";
 import { Error } from "@components/loaders/Error";
-import "./form.css";
 import { Load } from '../loaders/Load';
+import "./form.css";
 
 export function FormLogin({}) {
   // State initial for auth
@@ -15,8 +15,8 @@ export function FormLogin({}) {
 
   //State Initial for form
   const [formState, setformState] = useState({
-    email: "",
-    password: "",
+    email: "espinoza.camargo.jean.carlos@gmail.com",
+    password: "0eaa2d6d82",
   });
 
   // Control Login
