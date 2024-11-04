@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useId } from "react";
 import { Load } from "@components/loaders/Load";
 import { useAuth } from "@components/auth/Auth";
 import "./viewphrases.css";
@@ -8,12 +8,15 @@ export const ViewPhrases = ({
   url,
   functionExecuteSound,
   functionExecuteImg,
+  render
 }) => {
   const { user, isAuthenticated } = useAuth();
 
   const [loading, setloading] = useState(true);
   const [fileSound, setfileSound] = useState(null);
   const [fileImg, setfileImg] = useState(null);
+  const buttonID = useId();
+
   const generateCard = () => {
     if (data) {
       return data.map((value) => {
@@ -40,6 +43,14 @@ export const ViewPhrases = ({
                     </footer>      
                   </main>
                 </div>
+                <button
+                    onClick={() => {
+                      render(null);
+                    }}
+                    key={buttonID}
+                  >
+                    Regresar
+                </button>
               </section>
             </>
           );

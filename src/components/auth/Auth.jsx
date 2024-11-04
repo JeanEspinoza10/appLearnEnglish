@@ -11,7 +11,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
     name:'',
     email:'',
-    jwt:''
+    jwt:'',
+    refreshToken:'',
   })
   
   const [isAuthenticated, setisAuthenticated] = useState(false);

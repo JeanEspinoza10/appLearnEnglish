@@ -15,8 +15,8 @@ export function FormLogin({}) {
 
   //State Initial for form
   const [formState, setformState] = useState({
-    email: "espinoza.camargo.jean.carlos@gmail.com",
-    password: "0eaa2d6d82",
+    email: "",
+    password: "",
   });
 
   // Control Login
@@ -40,7 +40,8 @@ export function FormLogin({}) {
           ...user,
           name: firstname,
           email: formState.email,
-          jwt: data[0].access_token
+          jwt: data[0].access_token,
+          refreshToken: data[0].refresh_token
         }
         setUser(newUser)
         navigate("/users", { replace: true });

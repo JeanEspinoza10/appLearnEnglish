@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from '@components/auth/Auth';
-import ImageHome from '@assets/images/home.png'
+import ImageHome from '@assets/images/home.jpg'
 import './home.css'
 
 

@@ -18,9 +18,12 @@
 
 .container-user-learning-main {
     width: 100%;
-    height: 100%;
-    margin-top: 0px;   
-    background-color: #F0F0F0;     
+    max-width: 800px;
+    height: 100%; 
+    background-color: #F0F0F0;
+    padding-left: 50px;
+    display: grid;
+    grid-template-rows: 130px 1fr;
 }
 
 
@@ -55,42 +58,101 @@
     opacity: 0.2;
 }
 
-/*Aside Main*/
+/*******************************/
+/*******************************/
+/***********Aside Main*/
+/*******************************/
+/*******************************/
+
 .container-user-aside-main {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 40px; 
 }
+.container-user-aside-main-service {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
 
-/*Aside Main*/
+/*******************************/
+/*******************************/
+/***********Aside Main*/
+/*******************************/
+/*******************************/
 
 
+/*******************************/
+/*******************************/
 /*Footer*/
 .container-user-aside-footer {
    margin-bottom: 30px;
    display: flex;
    flex-direction: row;
    align-items: center;
-   padding-left: 15px;
-}
-
-.container-user-aside-footer h4 {
-    font-size: 25px;
-    margin-left: 30px ;
-}
-.container-user-aside-footer-button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-   
+   padding-left: 0px;
 }
 /*Footer*/
+/*******************************/
+/*******************************/
 
 
-.container-user-learning-main button {
+/*******************************/
+/***********Main Container*/
+/*******************************/
+/*******************************/
+
+.container-user-learning-header {
+    padding-top: 25px; 
+}
+
+
+.container-user-learning-header h3 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-weight: bold; /* Equivale a font-bold */
+}
+
+.container-user-learning-header  p {
+    font-size: 20px;
+    color: #718096;
+    margin-top: 10px; 
+    width: 100%;
+}
+
+
+
+
+.container-user-learning-section {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+
+.container-user-learning-section #container-phrases-list {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    margin-top: 0px;
+    transition: all 0.3s ease;
+}
+
+.container-user-learning-section .container-user-learning-main-all {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-user-learning-section .container-user-learning-main-all .container-view-phrases {
+    margin: 0px;
+}
+.container-user-learning-section .container-user-learning-main-all button {
     width: 250px;
     height: 50px;
     background-color: #9B59B6;
@@ -99,114 +161,85 @@
     border-radius: 12px; 
     padding: 10px 20px;
     font-size: 15px;
-    margin: 10px 0;
+    margin: 20px 0;
     cursor: pointer;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s ease;
 }
 
-
-
-
-.container-user-aside-main button {
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-    font-size: 20px;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .container-user-aside-main button:hover {
-    background-color:rgba(13, 60, 233);
-    color: white;
-  }
-
-  .container-user-aside-main button.clicked {
-    background-color:rgba(13, 60, 233);
-    color: white;
-  }
-
-
-.container-user-learning-main #container-phrases-list {
-    
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 10px;
-    padding: 0px 0px 0px 0px;
-}
-.container-user-learning-main #container-phrases-list button {
-    margin: 0px;
+.container-user-learning .label_hamburger {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    cursor: pointer; 
+    top: 50%; 
 }
 
-.container-user-learning-main #container-view-phrases {
-    height: 100%;
-    width: auto;
+.container-user-learning .label_hamburger-left {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    cursor: pointer; 
+    top: 50%; 
+    left: 280px; 
+    z-index: 10000;
 }
 
 
 
-.container-user-learning .container-login {
-    margin: 0px;
+#menu_hamburguesa_right , #menu_hamburguesa_left {
+    display: none;
 }
-.container-user-learning .formLogin button {
-    width: 100%;
-}
+/*******************************/
+/***********Main Container*/
+/*******************************/
+/*******************************/
 
-  /* Styles for windows from 0 a 400px
 @media (max-width: 799px) {
+    
     .container-user-learning {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin: 0px 0px 20px 0px;
-        padding: 0px;
-        height: auto;
-    }
-    .container-user-learning aside {
-        width: 100%;
-        padding-top: 20px;
-    }
-    .container-user-learning aside nav button {
-        width: 150px;
-        transition: all 0.2s ease-in-out;
-        font-size: 15px;
-      }
-    .container-user-learning aside nav {
-        justify-content: center;
-        align-items: center;
-    }
-    .container-user-learning-main{
-        width: auto;
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
         
     }
-    .container-user-learning-main .container-loader {
-        margin-top: 70px;
-    }
-
-    .container-user-learning-main #container-phrases-list {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr); 
-        gap: 10px;   
-        padding: 10px;
-    }
-    .container-user-learning-main #container-phrases-list button {
-        width: 200px;
+    .container-user-aside {
+        display: none;
+        position: fixed;
+        flex-direction: column;
+        width: 70%;
         height: 100%;
+        z-index: 1000;
+
+    }
+    .container-user-learning .label_hamburger  {
+        display: block;
+    }
+    
+
+    .container-user-learning-main {
+        display: flex;
+        padding: 0px;
+        flex-direction: column;
+        width: 100%;
+        height: 100dvh;
+        align-items: center;
+        overflow: auto;
+    }
+    .container-user-learning-main #container-phrases-list {
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+    .container-user-learning-main .container-user-learning-main-all .container-view-phrases {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
-    .container-user-learning-main #container-view-phrases {
-        height: auto;
-        width:  50%;
-        margin-left: 20px;
+    .container-user-learning .label_hamburger-left  {
+        left: 65%; 
     }
-   
-} */
+
+}

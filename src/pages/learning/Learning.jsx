@@ -55,7 +55,8 @@ export const Learning = () => {
           <p>
             Descubre frases especialmente diseñadas para mejorar tu vocabulario
             y dominar el inglés con facilidad. ¡Aprovecha esta oportunidad para
-            llevar tu fluidez al siguiente nivel de manera rápida y efectiva!
+            llevar tu fluidez al siguiente nivel de manera rápida y efectiva!<br/>
+            👇Selecciona una frase para visualizar su audio y imagen.👇
           </p>
           <main className="container-learning-phares">
             {viewDetails ? (
@@ -75,10 +76,9 @@ export const Learning = () => {
                   url={"https://ingles.appdevelopmentapis.site/services/free"}
                   functionExecuteSound={downloadFileSound}
                   functionExecuteImg={downloadFileImg}
+                  render={setviewDetailst}
                 />
-                <button key={passwordHintId} onClick={() => setviewDetailst(false)}>
-                  Regresar
-                </button>
+               
                 
               </>
             ) : (

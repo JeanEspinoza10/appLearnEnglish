@@ -9,13 +9,22 @@ import "./mainheader.css";
 export const MainHeader = () => {
   const navigate = useNavigate();
   const {user, isAuthenticated} = useAuth()
+  // Function to not view the menu
+  const close_menu = () => {
+    const menuHam = document.getElementById("menu_hamburguesa")
+    if (menuHam.checked) {
+      menuHam.checked = false;
+    }
+  };
 
   // Get component of Login
   const get_login = (e) => {
     e.preventDefault();
     navigate("/login");
+    close_menu();
   };
 
+  
   return (
     <>
       
@@ -49,6 +58,7 @@ export const MainHeader = () => {
                         textDecoration: isActive ? "underline" : "none",
                       };
                     }}
+                    onClick={close_menu}
                   >
                     Nosotros
                   </NavLink>
@@ -61,6 +71,7 @@ export const MainHeader = () => {
                         textDecoration: isActive ? "underline" : "none",
                       };
                     }}
+                    onClick={close_menu}
                   >
                     Servicios
                   </NavLink>
@@ -73,6 +84,7 @@ export const MainHeader = () => {
                         textDecoration: isActive ? "underline" : "none",
                       };
                     }}
+                    onClick={close_menu}
                   >
                     Aprendiendo
                   </NavLink>
