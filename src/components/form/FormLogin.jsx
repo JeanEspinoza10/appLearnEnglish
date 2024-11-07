@@ -167,7 +167,7 @@ export function FormLogin({}) {
                   };
                 }}
               >
-                Ovlidar Contraseña
+                Olvidar Contraseña
               </NavLink>
           </nav>
         </div>
