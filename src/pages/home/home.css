@@ -72,6 +72,13 @@
         margin: 0px;
                 
     }
+    .container-home-buttons {
+ 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
     .container-home-description {
         margin: 0px;
         padding-left: 20px;

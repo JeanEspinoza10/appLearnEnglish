@@ -55,3 +55,14 @@
     font-size: 25px;
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
+
+/*Styles for windows from 0 a 400px*/
+@media (max-width: 799px) {
+    .container-service-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+}
