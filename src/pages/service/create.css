@@ -1,0 +1,57 @@
+.container-service-create {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 3s;
+    animation-name:animarservice ;
+    animation-duration: 5s;
+    margin: 25px 0px 25px 0px;
+    padding: 15px;
+    gap: 40px;
+}
+
+/* Add Animation */
+@keyframes animarhome {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+
+.container-service-create-description p {
+    line-height: 2.5rem;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-weight: 10;
+}  
+.container-service-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-service-form .container-login {
+    width: 100%;
+    height: auto;
+}
+
+
+.container-service-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.container-service-footer .componentButton  {
+    background: #0D3CE9;
+    width: 200px;
+    height: 60px;
+    color: white;
+    align-items: center;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}

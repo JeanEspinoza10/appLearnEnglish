@@ -8,7 +8,8 @@ export const ViewPhrases = ({
   url,
   functionExecuteSound,
   functionExecuteImg,
-  render
+  render,
+  buttonRender = true,
 }) => {
   const { user, isAuthenticated } = useAuth();
 
@@ -43,14 +44,19 @@ export const ViewPhrases = ({
                     </footer>      
                   </main>
                 </div>
-                <button
-                    onClick={() => {
-                      render(null);
-                    }}
-                    key={buttonID}
-                  >
-                    Regresar
-                </button>
+                {
+                  buttonRender && (
+                    <button
+                      onClick={() => {
+                        render(null);
+                      }}
+                      key={buttonID}
+                    >
+                      Regresar
+                    </button>
+                  )
+                }
+                
               </section>
             </>
           );

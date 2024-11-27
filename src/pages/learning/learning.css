@@ -15,13 +15,17 @@
   }
 
   .container-learning  h1 {
-    padding-left: 20px;
+    line-height: 2.5rem;
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
   }
 .container-learning p {
-    font-family: 'Open Sans', sans-serif; 
-    font-size: larger; 
-    line-height: 2.5rem; 
-    padding-left: 20px;
+    line-height: 2.5rem;
+    font-size: 20px;
+
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-weight: 10;
 }
 
 .container-learning-phares {
@@ -58,6 +62,12 @@
     transition: background-color 0.3s ease;
 }
 
+.container-home-buttons .componentButton {
+    cursor: pointer;
+}
+.container-home-buttons .componentButton:hover {
+    transform: scale(1.1);
+}
 
 @media (max-width: 799px) {
     .container-learning {

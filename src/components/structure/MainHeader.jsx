@@ -30,12 +30,14 @@ export const MainHeader = () => {
       
       <header className="mainHeader">
         <div className="mainHeader-container">
-          <img
-            src={ImageHeader}
-            width="100px"
-            height="100px"
-            alt="logo-application-learning"
-          />
+          <a href="/home">
+            <img
+              src={ImageHeader}
+              width="100px"
+              height="100px"
+              alt="logo-application-learning"
+            />
+          </a>
           <label className="label_hamburger" htmlFor="menu_hamburguesa">
             <svg viewBox="0 0 100 80" width="40" height="40">
               <rect width="100" height="20"></rect>
@@ -50,7 +52,7 @@ export const MainHeader = () => {
                 <CardInformation/>             
               ):(
                 <ul className="listAccess">
-                <li>
+                {/* <li>
                   <NavLink
                     to="/home"
                     style={({ isActive }) => {
@@ -88,7 +90,7 @@ export const MainHeader = () => {
                   >
                     Aprendiendo
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   {/* <NavLink
                     to="/contact"

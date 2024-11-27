@@ -12,6 +12,7 @@ import {Learning} from "./pages/learning/Learning.jsx"
 import { Protect } from "./components/auth/Protect.jsx";
 import { FormPassword } from "./components/form/FormPassword.jsx";
 import { useAuth } from '@components/auth/Auth';
+import { Create } from "./pages/service/Create.jsx";
 
 /*
 Render My Application
@@ -31,9 +32,11 @@ function App() {
           className={!isAuthenticated ? "container-main-render-all" : "container-main-render-all-user"}
         >
           <Routes>
+            <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/service" element={<Service />} />
+            <Route path="/service/create" element={<Create />} />
             <Route path="/contact" element={<FormContact />} />
             <Route path="/login" element={<FormLogin />} />
             <Route path="/register" element={<FormRegister />} />

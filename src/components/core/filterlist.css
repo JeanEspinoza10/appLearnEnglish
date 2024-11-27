@@ -10,7 +10,7 @@
 
 #container-phrases-list button {
     width: 250px;
-    height: 60px;
+    min-height: 60px;
     background-color: #9B59B6;
     color: #FFFFFF; 
     border: none;
