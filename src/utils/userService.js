@@ -119,3 +119,22 @@ export const changePassword = async (email) => {
       return error
     });
 }
+
+export const downloadFileSoundAll = async (jwt) => {
+  return fetch("https://ingles.appdevelopmentapis.site/phrases/sounds/all",{
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response)=>{
+    if(!response.ok){
+      throw new Error("Error in get all sounds")
+    }
+    return response.json()
+  })
+  .catch((error) => {
+    throw error; 
+  })
+}

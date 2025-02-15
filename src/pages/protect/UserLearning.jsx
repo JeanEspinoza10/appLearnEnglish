@@ -42,7 +42,6 @@ export const UserLearning = () => {
 
 
 
-  // Función para verificar el tamaño del viewport y ocultar el elemento
   function checkViewportSize() {
       const labelHamburgerLeft = document.getElementsByClassName('label_hamburger-left');
       const labelHamburgerRight = document.getElementsByClassName('label_hamburger');
@@ -94,20 +93,20 @@ export const UserLearning = () => {
     <section className="container-user-learning">
           <label className="label_hamburger" htmlFor="menu_hamburguesa_right">
           <img 
-              src={bottonRigth} // Asegúrate de cambiar esto a la ruta correcta de tu imagen
-              alt="Menu" // Texto alternativo para la imagen
-              width="40" // Ajusta el ancho según sea necesario
-              height="40" // Ajusta la altura según sea necesario
+              src={bottonRigth} 
+              alt="Menu" 
+              width="40" 
+              height="40" 
             />
           </label>
           <input type="checkbox"  id="menu_hamburguesa_right" onChange={toggleMenuRight}></input>
           
           <label className="label_hamburger-left" htmlFor="menu_hamburguesa_left">
           <img 
-              src={bottonLeft} // Asegúrate de cambiar esto a la ruta correcta de tu imagen
-              alt="Menu" // Texto alternativo para la imagen
-              width="40" // Ajusta el ancho según sea necesario
-              height="40" // Ajusta la altura según sea necesario
+              src={bottonLeft} 
+              alt="Menu" 
+              width="40" 
+              height="40" 
             />
           </label>
           <input type="checkbox" id="menu_hamburguesa_left" onChange={toggleMenuLeft}></input>
